@@ -1,0 +1,59 @@
+<!-- 
+Similar Example: https://www.w3resource.com/javascript-exercises/javascript-dom-exercise-7.php
+number of rows: 4
+number of columns: 5
+"Submit"
+Print this:
+1 8  9 16 17
+2 7 10 15 18
+3 6 11 14 19
+4 5 12 13 20    
+-->
+
+<!DOCTYPE html>
+<html>
+  <body>
+    <form id="form">
+      <label for="rows">Number of rows:</label>
+      <input type="text" name="rows" id="row" />
+      <label for="cols">Number of cols:</label>
+      <input type="text" name="cols" id="col" />
+      <input
+        type="submit"
+        onClick="createTable()"
+        id="submitBtn"
+        value="submit"
+      />
+    </form>
+    <table id="matrix"></table>
+  </body>
+  <script type="text/javascript">
+    const submitBtn = document.querySelector("#submitBtn");
+    submitBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+    });
+    function createTable() {
+      let rows = document.getElementById("row").value;
+      let cols = document.getElementById("col").value;
+      if (rows && cols) {
+        let table = document.getElementById("matrix");
+        for (let rowIndex = 0; rowIndex < rows; rowIndex++) {
+          let currentRow = [];
+          let r = table.insertRow(rowIndex);
+          for (let colIndex = 0; colIndex < cols; colIndex++) {
+            var c = r.insertCell(colIndex);
+            if (colIndex % 2 == 0) {
+              currentRow.push(rows * colIndex + 1 + rowIndex);
+              c.innerHTML = rows * colIndex + 1 + rowIndex;
+            } else {
+              currentRow.push(rows * (colIndex + 1) - rowIndex);
+              c.innerHTML = rows * (colIndex + 1) - rowIndex;
+            }
+          }
+        }
+      } else {
+        alert("Rows or columns can't be empty");
+      }
+    }
+  </script>
+</html>
