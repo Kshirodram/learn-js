@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <style>
+    .progressbar {
+      border: 1px solid #ccc;
+      height: 20px;
+      border-radius: 10px;
+      background: #f1f1f1;
+    }
+    .progress {
+      height: 100%;
+      width: 0;
+      background: green;
+      border-radius: 10px;
+    }
+  </style>
+  <body>
+    <div class="progressbar">
+      <div class="progress" />
+    </div>
+    <button onclick="fillProgressBar(3)">Start</button>
+    <button onclick="fillProgressBarJS(2)">Start with JS</button>
+  </body>
+  <script>
+    // simple css
+    function fillProgressBar() {
+      const progressElement = document.querySelector(".progress");
+      progressElement.style.transition = "1s linear width";
+      progressElement.style.width = "100%";
+    }
+    // with JS with 2 sec
+    function fillProgressBarJS(sec) {
+      const progressElement = document.querySelector(".progress");
+      let currentPercentage = 0;
+      const interval = setInterval(() => {
+        currentPercentage++;
+        progressElement.style.width = `${currentPercentage}%`;
+        if (currentPercentage >= 100) {
+          clearInterval(interval);
+        }
+      }, (sec * 1000) / 100);
+    }
+  </script>
+</html>

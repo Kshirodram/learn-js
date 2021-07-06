@@ -1,2 +1,2 @@
-# learn-js
+# learn-web
 Learn basics JS 
