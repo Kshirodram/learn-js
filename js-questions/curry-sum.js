@@ -22,7 +22,7 @@ const curriedSum = (func) => {
         params = params.concat(extraParams);
         return recursiveCurried.apply(this, params);
       }
-    }
+    } 
   }
 } 
 
