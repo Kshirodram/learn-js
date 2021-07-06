@@ -1,0 +1,22 @@
+<html>
+  <body>
+    <button>debounce</button>
+    <script>
+      const debounce = (func, delay) => {
+        console.log("Dads");
+        let isDebouncing;
+        return (...params) => {
+          clearTimeout(isDebouncing);
+          isDebouncing = setTimeout(() => func.apply(this, params), delay);
+        };
+      };
+      const debounceBtn = document.querySelector("button");
+      debounceBtn.addEventListener(
+        "click",
+        debounce(() => {
+          console.log("Debounce for 2s", new Date().toUTCString());
+        }, 2000)
+      );
+    </script>
+  </body>
+</html>
